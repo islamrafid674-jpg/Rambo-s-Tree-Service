@@ -1,36 +1,50 @@
 import { motion } from 'motion/react';
-import { Quote } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
     id: 1,
     name: 'Michael T.',
-    location: 'Point Loma, San Diego',
-    text: 'Rambo’s Tree Service did an incredible job removing a dead eucalyptus tree that was leaning dangerously close to our roof. They were fast, professional, and their cleanup was immaculate. Highly recommend!',
+    location: 'Estate Owner, Point Loma',
+    text: 'Rambo’s Tree Service executed a flawless removal of a massive, hazardous eucalyptus leaning over our guest house. Their precision, safety protocols, and immaculate cleanup were worth every penny. True professionals.',
   },
   {
     id: 2,
     name: 'Jessica R.',
-    location: 'Chula Vista, CA',
-    text: 'We had several overgrown palm trees that were dropping fronds everywhere. The team arrived on time, trimmed them perfectly, and hauled away all the debris. Great pricing and excellent service.',
+    location: 'Property Manager, Chula Vista',
+    text: 'Managing multiple high-end properties means I need reliable, top-tier contractors. Rambo’s team consistently delivers architectural pruning that enhances our landscapes while mitigating liability. They are my only call.',
   },
   {
     id: 3,
     name: 'David L.',
-    location: 'North Park, San Diego',
-    text: 'I called them for an emergency removal after a storm knocked a branch onto our driveway. They responded immediately, handled the situation safely, and gave us a very fair price. True professionals.',
+    location: 'Homeowner, North Park',
+    text: 'After a severe storm, we had a 40-foot branch threatening our roof. They responded immediately in the middle of the night, secured the area, and safely dismantled the hazard. Their emergency response is unmatched.',
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 bg-white">
+    <section id="testimonials" className="py-20 md:py-32 bg-stone-100 relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-stone-300 to-transparent"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-brand font-semibold tracking-wide uppercase text-sm mb-3">Testimonials</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6 tracking-tight">
-            What Our Customers Say
-          </h3>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-accent font-bold tracking-widest uppercase text-xs mb-4"
+          >
+            Client Success Stories
+          </motion.h2>
+          <motion.h3 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-900 mb-6 tracking-tight"
+          >
+            Trusted by San Diego's Finest Estates
+          </motion.h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -41,22 +55,25 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-stone-50 rounded-2xl p-8 border border-stone-100 relative"
+              className="bg-white rounded-3xl p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100 relative hover:-translate-y-1 transition-transform duration-500"
             >
-              <Quote className="absolute top-6 right-6 w-10 h-10 text-stone-200" />
+              <Quote className="absolute top-8 right-8 w-12 h-12 text-stone-100" />
               <div className="flex gap-1 mb-6 text-yellow-400">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+                  <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
-              <p className="text-stone-600 italic mb-6 leading-relaxed relative z-10">
+              <p className="text-stone-600 italic mb-8 leading-relaxed relative z-10 font-light text-lg">
                 "{testimonial.text}"
               </p>
-              <div>
-                <h4 className="font-bold text-stone-900">{testimonial.name}</h4>
-                <p className="text-sm text-stone-500">{testimonial.location}</p>
+              <div className="flex items-center gap-4 border-t border-stone-100 pt-6">
+                <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-brand font-bold text-lg">
+                  {testimonial.name.split(' ')[0][0]}{testimonial.name.split(' ')[1][0]}
+                </div>
+                <div>
+                  <h4 className="font-bold text-stone-900">{testimonial.name}</h4>
+                  <p className="text-sm text-stone-500 font-medium">{testimonial.location}</p>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -59,14 +59,14 @@ const galleryItems = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="py-24 bg-stone-50">
+    <section id="gallery" className="py-20 md:py-32 bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-brand font-semibold tracking-wide uppercase text-sm mb-3">Our Work</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6 tracking-tight">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-900 mb-6 tracking-tight">
             Recent Projects Gallery
           </h3>
-          <p className="text-lg text-stone-600">
+          <p className="text-lg sm:text-xl text-stone-600 font-light leading-relaxed">
             Take a look at some of our recent tree care projects across the San Diego area. We take pride in leaving every property looking better than we found it.
           </p>
         </div>
